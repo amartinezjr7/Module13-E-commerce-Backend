@@ -13,7 +13,13 @@ router.get('/', (req, res) => {
       attributes: ['id', 'product_name','price','stock', 'category_id']
     }
   })
-    .then(dbCatagory => res.json(dbCatagory))
+  .then(dbCategory => {
+    if(!dbCategory) {
+      res.status(404).json({message: 'No category found with this id'});
+      return;
+    }
+    res.json(dbCategory);
+  })
     .catch(err => {
       console.log(err);
       res.status(500).json(err);
@@ -32,11 +38,11 @@ router.get('/:id', (req, res) => {
       model:Product,
       attributes:['id', 'product_name', 'price','stock', 'category_id']
     }
-  }).then(dbCatagory => {
-      if(!dbCatagory){
+  }).then(dbCategory => {
+      if(!dbCategory){
         res.status(404).json({ message: 'No catagory found this with this id'});
         return;
-      }res.json(dbCatagory);
+      }res.json(dbCategory);
     }).catch(err =>{
         console.log(err);
         res.status(500).json(err);
@@ -47,8 +53,8 @@ router.post('/', (req, res) => {
   Category.create({
     category_name: req.body.category_name
   })
-  .then(dbCatagory =>{
-    res.json(dbCatagory)
+  .then(dbCategory =>{
+    res.json(dbCategory)
   }).then(err =>{
     console.log(err);
     res.status(500).json(err);
@@ -60,12 +66,12 @@ router.put('/:id', (req, res) => {
     where: {
       id: req.params.id
     }
-  }).then(dbCatagory => {
-    if(!dbCatagory){
+  }).then(dbCategory => {
+    if(!dbCategory){
       res.status(404).json({message:'No catagory found with this id'});
       return;
     }
-    res.json(dbCatagory);
+    res.json(dbCategory);
   }).catch(err => {
     console.log(err);
     res.status(500).json(err);
@@ -73,18 +79,22 @@ router.put('/:id', (req, res) => {
 });
 
 router.delete('/:id', (req, res) => {
-  Category.destroy(req.body, {
+  Category.destroy({
     where: {
       id: req.params.id
     }
-  }).then(dbCatagory =>{
+  }).then(dbCategory =>{
+    if(!dbCategory){
     res.status(404).json({message:'No category found with this id'});
     return;
+    }
+    res.json(dbCategory);
   })
-  res.json(dbCatagory);
-}).catch(err =>{
+  
+.catch(err =>{
   console.log(err);
   res.status(500).json(err);
+  });
 });
 
 module.exports = router;
