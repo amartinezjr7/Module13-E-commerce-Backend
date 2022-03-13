@@ -64,6 +64,15 @@ Enter PW when promted
 
 ## Demo
 
+[link](https://drive.google.com/file/d/1T4d_hfGYENGScPcj6yNhe513d9nTrt1P/view)
+![START with the Category GET, GET by ID, POST, PUT and DELETE](./demo/Start%20and%20Category%20GET%20POST%20PUT%20and%20DELETE.gif)
+
+[link](https://drive.google.com/file/d/1taCZEMnWN-e7Cruvr67o_82cTyVeibfo/view)
+![Product GET, Get by ID, POST, PUT and DELETE](./demo/product%20GET%20POST%20PUT%20and%20DELETE.gif)
+
+[link](https://drive.google.com/file/d/1FPIfd93YRj0-YW_Nfs6PJXHZ1Kp7t3TS/view)
+![tags GET, GEt by ID, POST, PUT and DELETE](./demo/Tags%20GET%20POST%20PUT%20and%20DELETE.gif)
+
 ## Questions
 
 ✉️ Contact me with any questions: [email](mailto:amartinezjr7@gmail.com) , [GitHub](https://github.com/amartinezjr7)<br />
